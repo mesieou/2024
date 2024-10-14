@@ -49,5 +49,36 @@ class BSF {
 }
 
 const myFirstTree = new BSF();
-console.log(`Created empty tree${myFirstTree}`);
-console.log(`Added 8: ${myFirstTree.add(8)}`);
+myFirstTree.add(8)
+myFirstTree.add(4)
+myFirstTree.add(10)
+myFirstTree.add(25)
+myFirstTree.add(2)
+
+
+// create a function to sum numbers within the range
+const sumWithinRange = (tree, low, high) => {
+    // if the tree is empty
+    if (!tree) {
+        return 0;
+    }
+
+    let sum = 0;
+    // main case to add up values within range
+    if (low <= tree.val && tree.val <= high) {
+        sum += tree.val        
+    }
+    // recursive calls to traverse through the tree
+    if (tree.left) {
+        sum += sumWithinRange(tree.left, low, high);
+    }
+
+    if (tree.right) {
+        sum += sumWithinRange(tree.right, low, high);
+    }
+
+    return sum
+}
+
+const sum = sumWithinRange(myFirstTree.root, 3,8); 
+console.log(sum)
