@@ -51,4 +51,23 @@ my_first_bst.add(1)
 
 print(my_first_bst)
 
-# create a sumwithing range function for bst
+# create a sumwithin range method for the BST
+def sum_within_range (root, low, high):
+    if not root:
+        return 0
+    
+    sum = 0
+
+    if(low <= root.val <= high):
+        sum += root.val
+    
+    if(root.left):
+        sum += sum_within_range(root.left, low, high)
+
+    if(root.right):
+        sum += sum_within_range(root.right, low, high)    
+    
+    return sum
+
+
+print(f"Total sum between 0 and 10 is {sum_within_range(my_first_bst.root, 0, 10)}")
