@@ -1,14 +1,11 @@
 // Goal: return the largest component in a graph given an adjacency list
 
-first_grapth = {
-    'A': ['B', 'C'],
-    'B': ['A', 'C'],
-    'C': ['A', 'B'],
-    'D': ['E'],
-    'E': ['D', 'F'],
-    'F': ['E', 'G'],
-    'G': ['F']
-}
+const edgeList = [
+    ['A', 'B'],  // A connected to B
+    ['A', 'E'],  // A connected to E
+    ['B', 'C'],  // B connected to C
+    ['C', 'D']   // C connected to D
+];
 
 // create bfs algorithm
 function dfs(graph, node, visited, currSizeComponent){
