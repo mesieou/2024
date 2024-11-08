@@ -30,4 +30,4 @@ const reverseLinkedList = (head) => {
 }
 
 const res = reverseLinkedList(a);
-console.log(res);
+console.log(object);
