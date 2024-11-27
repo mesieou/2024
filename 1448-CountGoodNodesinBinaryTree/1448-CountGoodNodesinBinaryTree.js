@@ -15,7 +15,7 @@ var goodNodes = function(root) {
         if(root == null) return 0;
         gratestNum = Math.max(gratestNum, root.val);
 
-        if(!root.left && !root.right && root.val >= gratestNum) return 1;
+        // if(!root.left && !root.right && root.val >= gratestNum) return 1;
 
         if (root.val >= gratestNum){
             return 1 + dfs(root.left, gratestNum) + dfs(root.right, gratestNum);
