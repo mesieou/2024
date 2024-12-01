@@ -7,17 +7,18 @@ from collections import deque
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-       queue, sum_per_level, level_number = deque([root]), {}, 0
+       queue, sum_per_level = deque([root]), 0
 
        while queue:
         curr_level = len(queue)
+        sum_per_level = 0
         for i in range(curr_level):
             curr = queue.popleft()
-            sum_per_level[level_number] = sum_per_level.get(level_number, 0) + curr.val
+            sum_per_level += curr.val
+            
             if curr.left: queue.append(curr.left)
             if curr.right: queue.append(curr.right)
-        level_number += 1
 
-       return  sum_per_level[level_number - 1]   
+       return  sum_per_level
 
         
