@@ -15,15 +15,14 @@ var goodNodes = function(root) {
     function dfs(node, acc){
         if(node == null) return 0;
 
-        console.log(node.val)
         acc = Math.max(acc, node.val)
 
+        let ans = dfs(node.left, acc) + dfs(node.right, acc)
+        
         if(node.val >= acc) {
-            return 1 + dfs(node.left, acc) + dfs(node.right, acc)
-        } else {
-            return dfs(node.left, acc) + dfs(node.right, acc);
+            ans++;
         }
-
+        return ans;
     }
     return dfs(root, -Infinity);
 };
