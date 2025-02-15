@@ -11,18 +11,19 @@
  * @return {number}
  */
 var goodNodes = function(root) {
-    const dfs = (root, gratestNum) => {
-        if(root == null) return 0;
-        gratestNum = Math.max(gratestNum, root.val);
 
-        // if(!root.left && !root.right && root.val >= gratestNum) return 1;
+    function dfs(node, acc){
+        if(node == null) return 0;
 
-        if (root.val >= gratestNum){
-            return 1 + dfs(root.left, gratestNum) + dfs(root.right, gratestNum);
-        } else{
-            return dfs(root.left, gratestNum) + dfs(root.right, gratestNum)
+        console.log(node.val)
+        acc = Math.max(acc, node.val)
+
+        if(node.val >= acc) {
+            return 1 + dfs(node.left, acc) + dfs(node.right, acc)
+        } else {
+            return dfs(node.left, acc) + dfs(node.right, acc);
         }
+
     }
-    
-    return dfs(root, -Infinity)
+    return dfs(root, -Infinity);
 };
