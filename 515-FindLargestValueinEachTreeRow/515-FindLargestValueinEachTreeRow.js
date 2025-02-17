@@ -11,20 +11,22 @@
  * @return {number[]}
  */
 var largestValues = function(root) {
-    if(!root) return []
-    let queue = [root], largestValues = [];
+    if(root == null) return [];
+    let queue = [root];
+    let ans = [];
 
     while(queue.length){
-        let currLevel = queue.length;
-        let currLargest = -Infinity;
-        for(let i = 0; i < currLevel; i++){
-            let currNode = queue.shift();
-            currLargest = Math.max(currLargest, currNode.val);
+        let highest = -Infinity
+        let nextQueue = []
+        for(let i = 0; i < queue.length; i++){
+            let currNode = queue[i]
+            highest = Math.max(highest, currNode.val)
 
-            if(currNode.left) queue.push(currNode.left);
-            if(currNode.right) queue.push(currNode.right);
+            if(currNode.left) nextQueue.push(currNode.left)
+            if(currNode.right) nextQueue.push(currNode.right)
         }
-        largestValues.push(currLargest);
+        ans.push(highest)
+        queue = nextQueue
     }
-    return largestValues
+    return ans;
 };
